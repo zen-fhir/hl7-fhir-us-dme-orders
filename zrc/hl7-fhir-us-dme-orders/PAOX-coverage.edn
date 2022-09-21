@@ -1,0 +1,48 @@
+{ns hl7-fhir-us-dme-orders.PAOX-coverage,
+ import
+ #{hl7-fhir-r4-core.BackboneElement
+   hl7-fhir-r4-core.code
+   zen.fhir
+   hl7-fhir-r4-core.string
+   hl7-fhir-us-core.us-core-organization
+   hl7-fhir-r4-core.Coverage
+   hl7-fhir-r4-core.Reference
+   hl7-fhir-r4-core.Element
+   hl7-fhir-r4-core.Identifier},
+ schema
+ {:zen/tags #{zen.fhir/profile-schema zen/schema},
+  :zen/desc "PAO Coverage Resource Profile",
+  :zen.fhir/type "Coverage",
+  :zen.fhir/profileUri
+  "http://hl7.org/fhir/us/dme-orders/StructureDefinition/PAOX-coverage",
+  :zen.fhir/version "0.5.21-6",
+  :confirms #{zen.fhir/Resource hl7-fhir-r4-core.Coverage/schema},
+  :type zen/map,
+  :keys
+  {:identifier
+   {:type zen/vector,
+    :every
+    {:confirms #{hl7-fhir-r4-core.Identifier/schema},
+     :fhir/flags #{:MS}}},
+   :status
+   {:confirms #{hl7-fhir-r4-core.code/schema}, :fhir/flags #{:MS}},
+   :_status {:confirms #{hl7-fhir-r4-core.Element/schema}},
+   :subscriberId
+   {:confirms #{hl7-fhir-r4-core.string/schema}, :fhir/flags #{:MS}},
+   :_subscriberId {:confirms #{hl7-fhir-r4-core.Element/schema}},
+   :beneficiary
+   {:confirms #{hl7-fhir-r4-core.Reference/schema zen.fhir/Reference},
+    :fhir/flags #{:MS},
+    :zen.fhir/reference {:refers #{}}},
+   :payor
+   {:type zen/vector,
+    :every
+    {:confirms #{hl7-fhir-r4-core.Reference/schema zen.fhir/Reference},
+     :fhir/flags #{:MS},
+     :zen.fhir/reference
+     {:refers #{hl7-fhir-us-core.us-core-organization/schema}}}},
+   :class
+   {:type zen/vector,
+    :every
+    {:confirms #{hl7-fhir-r4-core.BackboneElement/schema},
+     :fhir/flags #{:MS}}}}}}

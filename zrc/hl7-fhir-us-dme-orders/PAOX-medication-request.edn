@@ -1,0 +1,99 @@
+{ns hl7-fhir-us-dme-orders.PAOX-medication-request,
+ import
+ #{hl7-fhir-r4-core.BackboneElement
+   hl7-fhir-r4-core.code
+   hl7-fhir-us-dme-orders.PAOX-Medication
+   zen.fhir
+   hl7-fhir-us-core.us-core-practitioner
+   hl7-fhir-r4-core.dateTime
+   hl7-fhir-us-core.us-core-organization
+   hl7-fhir-us-core.us-core-patient
+   hl7-fhir-r4-core.Reference
+   hl7-fhir-r4-core.Element
+   hl7-fhir-r4-core.value-set.v3-ActSubstanceAdminSubstitutionCode
+   hl7-fhir-r4-core.CodeableConcept
+   hl7-fhir-r4-core.Identifier
+   hl7-fhir-us-core.us-core-practitionerrole
+   hl7-fhir-us-core.us-core-medicationrequest
+   hl7-fhir-us-dme-orders.PAOX-coverage},
+ schema
+ {:zen/tags #{zen.fhir/profile-schema zen/schema},
+  :zen/desc "PAO MedicationRequest Profile ",
+  :zen.fhir/type "MedicationRequest",
+  :zen.fhir/profileUri
+  "http://hl7.org/fhir/us/dme-orders/StructureDefinition/PAOX-medication-request",
+  :zen.fhir/version "0.5.21-6",
+  :confirms
+  #{hl7-fhir-us-core.us-core-medicationrequest/schema
+    zen.fhir/Resource},
+  :type zen/map,
+  :keys
+  {:category
+   {:type zen/vector,
+    :every
+    {:confirms #{hl7-fhir-r4-core.CodeableConcept/schema},
+     :fhir/flags #{:MS}}},
+   :insurance
+   {:type zen/vector,
+    :every
+    {:confirms #{hl7-fhir-r4-core.Reference/schema zen.fhir/Reference},
+     :fhir/flags #{:MS},
+     :zen.fhir/reference
+     {:refers #{hl7-fhir-us-dme-orders.PAOX-coverage/schema}}}},
+   :substitution
+   {:confirms #{hl7-fhir-r4-core.BackboneElement/schema},
+    :type zen/map,
+    :keys
+    {:allowed
+     {:fhir/polymorphic true,
+      :zen.fhir/value-set
+      {:symbol
+       hl7-fhir-r4-core.value-set.v3-ActSubstanceAdminSubstitutionCode/value-set,
+       :strength :example}}}},
+   :_authoredOn {:confirms #{hl7-fhir-r4-core.Element/schema}},
+   :dispenseRequest
+   {:confirms #{hl7-fhir-r4-core.BackboneElement/schema},
+    :fhir/flags #{:MS}},
+   :authoredOn
+   {:confirms #{hl7-fhir-r4-core.dateTime/schema}, :fhir/flags #{:MS}},
+   :_intent {:confirms #{hl7-fhir-r4-core.Element/schema}},
+   :requester
+   {:confirms #{hl7-fhir-r4-core.Reference/schema zen.fhir/Reference},
+    :fhir/flags #{:MS},
+    :zen.fhir/reference
+    {:refers
+     #{hl7-fhir-us-core.us-core-practitionerrole/schema
+       hl7-fhir-us-core.us-core-organization/schema
+       hl7-fhir-us-core.us-core-patient/schema
+       hl7-fhir-us-core.us-core-practitioner/schema}}},
+   :supportingInformation
+   {:type zen/vector,
+    :every
+    {:confirms #{hl7-fhir-r4-core.Reference/schema zen.fhir/Reference},
+     :fhir/flags #{:MS},
+     :zen.fhir/reference {:refers #{}}}},
+   :identifier
+   {:type zen/vector,
+    :every
+    {:confirms #{hl7-fhir-r4-core.Identifier/schema},
+     :fhir/flags #{:MS}}},
+   :intent
+   {:const {:value "order"},
+    :confirms #{hl7-fhir-r4-core.code/schema}},
+   :subject
+   {:confirms #{hl7-fhir-r4-core.Reference/schema zen.fhir/Reference},
+    :fhir/flags #{:MS},
+    :zen.fhir/reference
+    {:refers #{hl7-fhir-us-core.us-core-patient/schema}}},
+   :medication
+   {:fhir/polymorphic true,
+    :exclusive-keys #{#{:CodeableConcept :Reference}},
+    :type zen/map,
+    :keys
+    {:Reference
+     {:confirms
+      #{hl7-fhir-r4-core.Reference/schema zen.fhir/Reference},
+      :zen.fhir/reference
+      {:refers #{hl7-fhir-us-dme-orders.PAOX-Medication/schema}}},
+     :CodeableConcept
+     {:confirms #{hl7-fhir-r4-core.CodeableConcept/schema}}}}}}}

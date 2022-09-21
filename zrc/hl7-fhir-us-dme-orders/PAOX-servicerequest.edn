@@ -1,0 +1,159 @@
+{ns hl7-fhir-us-dme-orders.PAOX-servicerequest,
+ import
+ #{hl7-fhir-us-dme-orders.PAOX-provenance
+   hl7-fhir-r4-core.code
+   zen.fhir
+   hl7-fhir-us-core.us-core-practitioner
+   hl7-fhir-r4-core.Annotation
+   hl7-fhir-r4-core.dateTime
+   hl7-fhir-r4-core.string
+   hl7-fhir-us-core.us-core-organization
+   hl7-fhir-us-dme-orders.PAOX-servicerequest
+   hl7-fhir-us-core.us-core-patient
+   hl7-fhir-r4-core.Reference
+   hl7-fhir-r4-core.ServiceRequest
+   hl7-fhir-r4-core.Element
+   hl7-fhir-r4-core.CodeableConcept
+   hl7-fhir-r4-core.Identifier
+   hl7-fhir-us-core.us-core-careteam
+   hl7-fhir-us-core.us-core-location
+   hl7-fhir-us-core.us-core-encounter
+   hl7-fhir-us-core.us-core-practitionerrole
+   hl7-fhir-us-dme-orders.PAOX-coverage},
+ schema
+ {:zen.fhir/version "0.5.21-6",
+  :confirms
+  #{hl7-fhir-r4-core.ServiceRequest/schema zen.fhir/Resource},
+  :zen/tags #{zen.fhir/profile-schema zen/schema},
+  :zen.fhir/profileUri
+  "http://hl7.org/fhir/us/dme-orders/StructureDefinition/PAOX-servicerequest",
+  :require #{:authoredOn :requester},
+  :type zen/map,
+  :zen/desc
+  "This resource is used to \"order\" services (e.g. non-DME (device) and non-medications).\n\nFor this version of the IG, it is used primarily to order Home Health Services.",
+  :keys
+  {:category
+   {:type zen/vector,
+    :every
+    {:confirms #{hl7-fhir-r4-core.CodeableConcept/schema},
+     :fhir/flags #{:MS}}},
+   :insurance
+   {:type zen/vector,
+    :every
+    {:confirms #{hl7-fhir-r4-core.Reference/schema zen.fhir/Reference},
+     :fhir/flags #{:MS},
+     :zen.fhir/reference
+     {:refers #{hl7-fhir-us-dme-orders.PAOX-coverage/schema}}}},
+   :relevantHistory
+   {:type zen/vector,
+    :every
+    {:confirms #{hl7-fhir-r4-core.Reference/schema zen.fhir/Reference},
+     :fhir/flags #{:MS},
+     :zen.fhir/reference
+     {:refers #{hl7-fhir-us-dme-orders.PAOX-provenance/schema}}}},
+   :_patientInstruction {:confirms #{hl7-fhir-r4-core.Element/schema}},
+   :asNeeded #:fhir{:polymorphic true, :flags #{:MS}},
+   :_authoredOn {:confirms #{hl7-fhir-r4-core.Element/schema}},
+   :supportingInfo
+   {:type zen/vector,
+    :every
+    {:confirms #{hl7-fhir-r4-core.Reference/schema zen.fhir/Reference},
+     :fhir/flags #{:MS},
+     :zen.fhir/reference {:refers #{}}}},
+   :encounter
+   {:confirms #{hl7-fhir-r4-core.Reference/schema zen.fhir/Reference},
+    :fhir/flags #{:MS},
+    :zen.fhir/reference
+    {:refers #{hl7-fhir-us-core.us-core-encounter/schema}}},
+   :patientInstruction
+   {:confirms #{hl7-fhir-r4-core.string/schema}, :fhir/flags #{:MS}},
+   :_priority {:confirms #{hl7-fhir-r4-core.Element/schema}},
+   :_status {:confirms #{hl7-fhir-r4-core.Element/schema}},
+   :reasonCode
+   {:type zen/vector,
+    :every
+    {:confirms #{hl7-fhir-r4-core.CodeableConcept/schema},
+     :fhir/flags #{:MS}}},
+   :authoredOn
+   {:confirms #{hl7-fhir-r4-core.dateTime/schema}, :fhir/flags #{:MS}},
+   :note
+   {:type zen/vector,
+    :every
+    {:confirms #{hl7-fhir-r4-core.Annotation/schema},
+     :fhir/flags #{:MS}}},
+   :_intent {:confirms #{hl7-fhir-r4-core.Element/schema}},
+   :locationReference
+   {:type zen/vector,
+    :every
+    {:confirms #{hl7-fhir-r4-core.Reference/schema zen.fhir/Reference},
+     :zen.fhir/reference
+     {:refers #{hl7-fhir-us-core.us-core-location/schema}}}},
+   :requester
+   {:confirms #{hl7-fhir-r4-core.Reference/schema zen.fhir/Reference},
+    :fhir/flags #{:MS},
+    :zen.fhir/reference
+    {:refers
+     #{hl7-fhir-us-core.us-core-practitionerrole/schema
+       hl7-fhir-us-core.us-core-organization/schema
+       hl7-fhir-us-core.us-core-practitioner/schema}}},
+   :priority
+   {:confirms #{hl7-fhir-r4-core.code/schema}, :fhir/flags #{:MS}},
+   :status
+   {:confirms #{hl7-fhir-r4-core.code/schema}, :fhir/flags #{:MS}},
+   :code
+   {:confirms #{hl7-fhir-r4-core.CodeableConcept/schema},
+    :fhir/flags #{:MS}},
+   :identifier
+   {:type zen/vector,
+    :every
+    {:confirms #{hl7-fhir-r4-core.Identifier/schema},
+     :fhir/flags #{:MS}}},
+   :bodySite
+   {:type zen/vector,
+    :every
+    {:confirms #{hl7-fhir-r4-core.CodeableConcept/schema},
+     :fhir/flags #{:MS}}},
+   :intent
+   {:const {:value "order"},
+    :confirms #{hl7-fhir-r4-core.code/schema},
+    :fhir/flags #{:MS}},
+   :replaces
+   {:type zen/vector,
+    :every
+    {:confirms #{hl7-fhir-r4-core.Reference/schema zen.fhir/Reference},
+     :fhir/flags #{:MS},
+     :zen.fhir/reference
+     {:refers #{hl7-fhir-us-dme-orders.PAOX-servicerequest/schema}}}},
+   :orderDetail
+   {:type zen/vector,
+    :every
+    {:confirms #{hl7-fhir-r4-core.CodeableConcept/schema},
+     :fhir/flags #{:MS}}},
+   :locationCode
+   {:type zen/vector,
+    :every
+    {:confirms #{hl7-fhir-r4-core.CodeableConcept/schema},
+     :fhir/flags #{:MS}}},
+   :subject
+   {:confirms #{hl7-fhir-r4-core.Reference/schema zen.fhir/Reference},
+    :fhir/flags #{:MS},
+    :zen.fhir/reference
+    {:refers #{hl7-fhir-us-core.us-core-patient/schema}}},
+   :occurrence #:fhir{:polymorphic true, :flags #{:MS}},
+   :performer
+   {:type zen/vector,
+    :every
+    {:confirms #{hl7-fhir-r4-core.Reference/schema zen.fhir/Reference},
+     :zen.fhir/reference
+     {:refers
+      #{hl7-fhir-us-core.us-core-practitionerrole/schema
+        hl7-fhir-us-core.us-core-organization/schema
+        hl7-fhir-us-core.us-core-practitioner/schema
+        hl7-fhir-us-core.us-core-careteam/schema}}}},
+   :reasonReference
+   {:type zen/vector,
+    :every
+    {:confirms #{hl7-fhir-r4-core.Reference/schema zen.fhir/Reference},
+     :fhir/flags #{:MS},
+     :zen.fhir/reference {:refers #{}}}}},
+  :zen.fhir/type "ServiceRequest"}}

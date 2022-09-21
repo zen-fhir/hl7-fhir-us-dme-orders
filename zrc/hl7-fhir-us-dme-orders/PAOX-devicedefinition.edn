@@ -1,0 +1,11 @@
+{ns hl7-fhir-us-dme-orders.PAOX-devicedefinition,
+ import #{zen.fhir hl7-fhir-r4-core.DeviceDefinition},
+ schema
+ {:zen/tags #{zen.fhir/profile-schema zen/schema},
+  :zen/desc "PAO DeviceDefinition Resource Profile",
+  :zen.fhir/type "DeviceDefinition",
+  :zen.fhir/profileUri
+  "http://hl7.org/fhir/us/dme-orders/StructureDefinition/PAOX-devicedefinition",
+  :zen.fhir/version "0.5.21-6",
+  :confirms
+  #{zen.fhir/Resource hl7-fhir-r4-core.DeviceDefinition/schema}}}

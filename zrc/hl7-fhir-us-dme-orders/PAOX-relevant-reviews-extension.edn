@@ -1,0 +1,27 @@
+{ns hl7-fhir-us-dme-orders.PAOX-relevant-reviews-extension,
+ import
+ #{zen.fhir
+   hl7-fhir-r4-core.string
+   hl7-fhir-us-core.us-core-organization
+   hl7-fhir-r4-core.Reference
+   hl7-fhir-r4-core.CodeableConcept},
+ schema
+ {:zen.fhir/version "0.5.21-6",
+  :zen/tags #{zen/schema zen.fhir/structure-schema},
+  :zen.fhir/profileUri
+  "http://hl7.org/fhir/us/dme-orders/StructureDefinition/PAOX-relevant-reviews-extension",
+  :require #{:Result :ReviewType},
+  :type zen/map,
+  :zen/desc
+  "Extension to define relevant review (such as prior-authorization)",
+  :keys
+  {:ReviewType
+   {:confirms #{hl7-fhir-r4-core.CodeableConcept/schema},
+    :fhir/flags #{:MS}},
+   :IssuingOrganization
+   {:confirms #{hl7-fhir-r4-core.Reference/schema zen.fhir/Reference},
+    :fhir/flags #{:MS},
+    :zen.fhir/reference
+    {:refers #{hl7-fhir-us-core.us-core-organization/schema}}},
+   :Result
+   {:confirms #{hl7-fhir-r4-core.string/schema}, :fhir/flags #{:MS}}}}}
