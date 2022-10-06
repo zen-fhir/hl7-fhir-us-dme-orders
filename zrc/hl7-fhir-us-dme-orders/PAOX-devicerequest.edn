@@ -12,7 +12,7 @@
   :zen.fhir/type "DeviceRequest",
   :zen.fhir/profileUri
   "http://hl7.org/fhir/us/dme-orders/StructureDefinition/PAOX-devicerequest",
-  :zen.fhir/version "0.5.22",
+  :zen.fhir/version "0.5.22-1",
   :confirms #{zen.fhir/Resource hl7-fhir-r4-core.DeviceRequest/schema},
   :type zen/map,
   :keys
