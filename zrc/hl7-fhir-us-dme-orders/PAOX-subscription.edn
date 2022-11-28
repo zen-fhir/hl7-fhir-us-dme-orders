@@ -1,12 +1,5 @@
 {ns hl7-fhir-us-dme-orders.PAOX-subscription,
- import
- #{hl7-fhir-r4-core.Subscription
-   hl7-fhir-r4-core.BackboneElement
-   hl7-fhir-r4-core.code
-   hl7-fhir-r4-core.url
-   zen.fhir
-   hl7-fhir-r4-core.string
-   hl7-fhir-r4-core.Element},
+ import #{hl7-fhir-r4-core.Subscription zen.fhir},
  schema
  {:zen/tags #{zen.fhir/profile-schema zen/schema},
   :zen/desc
@@ -14,38 +7,19 @@
   :zen.fhir/type "Subscription",
   :zen.fhir/profileUri
   "http://hl7.org/fhir/us/dme-orders/StructureDefinition/PAOX-subscription",
-  :zen.fhir/version "0.6.3",
+  :zen.fhir/version "0.6.4",
   :confirms #{zen.fhir/Resource hl7-fhir-r4-core.Subscription/schema},
   :type zen/map,
   :keys
-  {:status
-   {:confirms #{hl7-fhir-r4-core.code/schema}, :fhir/flags #{:MS}},
-   :_status {:confirms #{hl7-fhir-r4-core.Element/schema}},
-   :reason
-   {:confirms #{hl7-fhir-r4-core.string/schema}, :fhir/flags #{:MS}},
-   :_reason {:confirms #{hl7-fhir-r4-core.Element/schema}},
-   :criteria
-   {:confirms #{hl7-fhir-r4-core.string/schema}, :fhir/flags #{:MS}},
-   :_criteria {:confirms #{hl7-fhir-r4-core.Element/schema}},
+  {:status #:fhir{:flags #{:MS}},
+   :reason #:fhir{:flags #{:MS}},
+   :criteria #:fhir{:flags #{:MS}},
    :channel
-   {:confirms #{hl7-fhir-r4-core.BackboneElement/schema},
-    :type zen/map,
+   {:type zen/map,
     :keys
-    {:type
-     {:confirms #{hl7-fhir-r4-core.code/schema}, :fhir/flags #{:MS}},
-     :_type {:confirms #{hl7-fhir-r4-core.Element/schema}},
-     :endpoint
-     {:confirms #{hl7-fhir-r4-core.url/schema}, :fhir/flags #{:MS}},
-     :_endpoint {:confirms #{hl7-fhir-r4-core.Element/schema}},
-     :payload
-     {:confirms #{hl7-fhir-r4-core.code/schema}, :fhir/flags #{:MS}},
-     :_payload {:confirms #{hl7-fhir-r4-core.Element/schema}},
-     :header
-     {:type zen/vector,
-      :every
-      {:confirms #{hl7-fhir-r4-core.string/schema},
-       :fhir/flags #{:MS}}},
-     :_header
-     {:type zen/vector,
-      :every {:confirms #{hl7-fhir-r4-core.Element/schema}}}},
+    {:type #:fhir{:flags #{:MS}},
+     :endpoint #:fhir{:flags #{:MS}},
+     :payload #:fhir{:flags #{:MS}},
+     :header {:type zen/vector, :every #:fhir{:flags #{:MS}}},
+     :_header {:type zen/vector, :every {}}},
     :fhir/flags #{:MS}}}}}

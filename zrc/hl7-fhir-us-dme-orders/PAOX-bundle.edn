@@ -1,16 +1,10 @@
 {ns hl7-fhir-us-dme-orders.PAOX-bundle,
  import
- #{hl7-fhir-r4-core.BackboneElement
-   hl7-fhir-r4-core.code
-   zen.fhir
-   hl7-fhir-r4-core.string
-   hl7-fhir-r4-core.instant
+ #{zen.fhir
    hl7-fhir-r4-core.Bundle
-   hl7-fhir-r4-core.value-set.bundle-type
-   hl7-fhir-r4-core.Element
-   hl7-fhir-r4-core.Identifier},
+   hl7-fhir-r4-core.value-set.bundle-type},
  schema
- {:zen.fhir/version "0.6.3",
+ {:zen.fhir/version "0.6.4",
   :confirms #{zen.fhir/Resource hl7-fhir-r4-core.Bundle/schema},
   :zen/tags #{zen.fhir/profile-schema zen/schema},
   :zen.fhir/profileUri
@@ -21,30 +15,17 @@
   "PAO Bundle profile includes a MessageHeader, Task, Subscription, service/device/medication order(s) and supporting documentation",
   :keys
   {:identifier
-   {:confirms #{hl7-fhir-r4-core.Identifier/schema},
-    :type zen/map,
-    :keys
-    {:id #:fhir{:flags #{:MS}},
-     :value
-     {:confirms #{hl7-fhir-r4-core.string/schema}, :fhir/flags #{:MS}},
-     :_value {:confirms #{hl7-fhir-r4-core.Element/schema}}},
+   {:type zen/map,
+    :keys {:id #:fhir{:flags #{:MS}}, :value #:fhir{:flags #{:MS}}},
     :require #{:value :id},
     :fhir/flags #{:MS}},
    :type
    {:const {:value "message"},
-    :confirms #{hl7-fhir-r4-core.code/schema},
     :fhir/flags #{:MS},
     :zen.fhir/value-set
     {:symbol hl7-fhir-r4-core.value-set.bundle-type/value-set,
      :strength :required}},
-   :_type {:confirms #{hl7-fhir-r4-core.Element/schema}},
-   :timestamp
-   {:confirms #{hl7-fhir-r4-core.instant/schema}, :fhir/flags #{:MS}},
-   :_timestamp {:confirms #{hl7-fhir-r4-core.Element/schema}},
+   :timestamp #:fhir{:flags #{:MS}},
    :entry
-   {:type zen/vector,
-    :every
-    {:confirms #{hl7-fhir-r4-core.BackboneElement/schema},
-     :fhir/flags #{:MS}},
-    :minItems 1}},
+   {:type zen/vector, :every #:fhir{:flags #{:MS}}, :minItems 1}},
   :zen.fhir/type "Bundle"}}
