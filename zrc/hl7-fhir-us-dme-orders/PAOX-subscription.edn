@@ -7,7 +7,7 @@
   :zen.fhir/type "Subscription",
   :zen.fhir/profileUri
   "http://hl7.org/fhir/us/dme-orders/StructureDefinition/PAOX-subscription",
-  :zen.fhir/version "0.6.4",
+  :zen.fhir/version "0.6.5",
   :confirms #{zen.fhir/Resource hl7-fhir-r4-core.Subscription/schema},
   :type zen/map,
   :keys
@@ -20,6 +20,5 @@
     {:type #:fhir{:flags #{:MS}},
      :endpoint #:fhir{:flags #{:MS}},
      :payload #:fhir{:flags #{:MS}},
-     :header {:type zen/vector, :every #:fhir{:flags #{:MS}}},
-     :_header {:type zen/vector, :every {}}},
+     :header {:type zen/vector, :every #:fhir{:flags #{:MS}}}},
     :fhir/flags #{:MS}}}}}
