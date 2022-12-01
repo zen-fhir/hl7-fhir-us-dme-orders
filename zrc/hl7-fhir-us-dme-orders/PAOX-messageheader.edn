@@ -11,7 +11,7 @@
    hl7-fhir-us-core.us-core-practitionerrole
    hl7-fhir-us-dme-orders.PAOX-task},
  schema
- {:zen.fhir/version "0.6.5",
+ {:zen.fhir/version "0.6.6",
   :confirms #{hl7-fhir-r4-core.MessageHeader/schema zen.fhir/Resource},
   :zen/tags #{zen.fhir/profile-schema zen/schema},
   :zen.fhir/profileUri
@@ -47,6 +47,7 @@
        hl7-fhir-us-core.us-core-practitioner/schema}}},
    :event
    {:fhir/polymorphic true,
+    :type zen/map,
     :fhir/flags #{:MS},
     :zen.fhir/value-set
     {:symbol

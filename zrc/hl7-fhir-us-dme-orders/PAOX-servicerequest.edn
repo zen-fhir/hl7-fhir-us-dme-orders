@@ -13,7 +13,7 @@
    hl7-fhir-us-core.us-core-practitionerrole
    hl7-fhir-us-dme-orders.PAOX-coverage},
  schema
- {:zen.fhir/version "0.6.5",
+ {:zen.fhir/version "0.6.6",
   :confirms
   #{hl7-fhir-r4-core.ServiceRequest/schema zen.fhir/Resource},
   :zen/tags #{zen.fhir/profile-schema zen/schema},
@@ -39,7 +39,8 @@
      :confirms #{zen.fhir/Reference},
      :zen.fhir/reference
      {:refers #{hl7-fhir-us-dme-orders.PAOX-provenance/schema}}}},
-   :asNeeded #:fhir{:polymorphic true, :flags #{:MS}},
+   :asNeeded
+   {:fhir/polymorphic true, :type zen/map, :fhir/flags #{:MS}},
    :supportingInfo
    {:type zen/vector,
     :every
@@ -89,7 +90,8 @@
     :confirms #{zen.fhir/Reference},
     :zen.fhir/reference
     {:refers #{hl7-fhir-us-core.us-core-patient/schema}}},
-   :occurrence #:fhir{:polymorphic true, :flags #{:MS}},
+   :occurrence
+   {:fhir/polymorphic true, :type zen/map, :fhir/flags #{:MS}},
    :performer
    {:type zen/vector,
     :every

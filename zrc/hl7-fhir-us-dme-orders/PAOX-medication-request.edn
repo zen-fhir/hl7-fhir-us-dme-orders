@@ -15,7 +15,7 @@
   :zen.fhir/type "MedicationRequest",
   :zen.fhir/profileUri
   "http://hl7.org/fhir/us/dme-orders/StructureDefinition/PAOX-medication-request",
-  :zen.fhir/version "0.6.5",
+  :zen.fhir/version "0.6.6",
   :confirms
   #{hl7-fhir-us-core.us-core-medicationrequest/schema
     zen.fhir/Resource},
@@ -34,6 +34,7 @@
     :keys
     {:allowed
      {:fhir/polymorphic true,
+      :type zen/map,
       :zen.fhir/value-set
       {:symbol
        hl7-terminology-r4.value-set.v3-ActSubstanceAdminSubstitutionCode/value-set,
@@ -64,8 +65,8 @@
     {:refers #{hl7-fhir-us-core.us-core-patient/schema}}},
    :medication
    {:fhir/polymorphic true,
-    :exclusive-keys #{#{:CodeableConcept :Reference}},
     :type zen/map,
+    :exclusive-keys #{#{:CodeableConcept :Reference}},
     :keys
     {:Reference
      {:confirms #{zen.fhir/Reference},
