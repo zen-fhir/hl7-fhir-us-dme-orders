@@ -5,7 +5,7 @@
   :zen.fhir/type "Reference",
   :zen.fhir/profileUri
   "http://fhir.org/fhir/us/dme-orders/StructureDefinition/PAOX-devicerequest-extension",
-  :zen.fhir/version "0.6.6",
+  :zen.fhir/version "0.6.6-7",
   :confirms #{zen.fhir/Reference},
   :zen.fhir/reference
   {:refers #{hl7-fhir-us-dme-orders.PAOX-devicedefinition/schema}}}}
