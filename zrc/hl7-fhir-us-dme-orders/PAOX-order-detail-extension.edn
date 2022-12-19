@@ -1,19 +1,14 @@
 {ns hl7-fhir-us-dme-orders.PAOX-order-detail-extension,
- import
- #{zen.fhir
-   hl7-fhir-r4-core.Quantity
-   hl7-fhir-r4-core.CodeableConcept},
- schema
- {:zen.fhir/version "0.6.6-7",
-  :zen/tags #{zen/schema zen.fhir/structure-schema},
-  :zen.fhir/profileUri
-  "http://fhir.org/fhir/us/dme-orders/StructureDefinition/PAOX-order-detail-extension",
-  :require #{:Quantity :Item},
-  :type zen/map,
-  :zen/desc "Order detail extension",
-  :keys
-  {:Quantity
-   {:confirms #{hl7-fhir-r4-core.Quantity/schema}, :fhir/flags #{:MS}},
-   :Item
-   {:confirms #{hl7-fhir-r4-core.CodeableConcept/schema},
-    :fhir/flags #{:MS}}}}}
+ import #{zen.fhir
+          hl7-fhir-r4-core.Quantity
+          hl7-fhir-r4-core.CodeableConcept},
+ schema {:zen.fhir/version "0.6.6-8",
+         :zen/tags #{zen/schema zen.fhir/structure-schema},
+         :zen.fhir/profileUri "http://fhir.org/fhir/us/dme-orders/StructureDefinition/PAOX-order-detail-extension",
+         :require #{:Quantity :Item},
+         :type zen/map,
+         :zen/desc "Order detail extension",
+         :keys {:Quantity {:confirms #{hl7-fhir-r4-core.Quantity/schema},
+                           :fhir/flags #{:MS}},
+                :Item {:confirms #{hl7-fhir-r4-core.CodeableConcept/schema},
+                       :fhir/flags #{:MS}}}}}

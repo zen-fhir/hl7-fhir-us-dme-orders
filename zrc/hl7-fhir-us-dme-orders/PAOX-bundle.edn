@@ -1,31 +1,25 @@
 {ns hl7-fhir-us-dme-orders.PAOX-bundle,
- import
- #{zen.fhir
-   hl7-fhir-r4-core.Bundle
-   hl7-fhir-r4-core.value-set.bundle-type},
- schema
- {:zen.fhir/version "0.6.6-7",
-  :confirms #{zen.fhir/Resource hl7-fhir-r4-core.Bundle/schema},
-  :zen/tags #{zen.fhir/profile-schema zen/schema},
-  :zen.fhir/profileUri
-  "http://hl7.org/fhir/us/dme-orders/StructureDefinition/PAOX-bundle",
-  :require #{:identifier :entry :timestamp},
-  :type zen/map,
-  :zen/desc
-  "PAO Bundle profile includes a MessageHeader, Task, Subscription, service/device/medication order(s) and supporting documentation",
-  :keys
-  {:identifier
-   {:type zen/map,
-    :keys {:id #:fhir{:flags #{:MS}}, :value #:fhir{:flags #{:MS}}},
-    :require #{:value :id},
-    :fhir/flags #{:MS}},
-   :type
-   {:const {:value "message"},
-    :fhir/flags #{:MS},
-    :zen.fhir/value-set
-    {:symbol hl7-fhir-r4-core.value-set.bundle-type/value-set,
-     :strength :required}},
-   :timestamp #:fhir{:flags #{:MS}},
-   :entry
-   {:type zen/vector, :every #:fhir{:flags #{:MS}}, :minItems 1}},
-  :zen.fhir/type "Bundle"}}
+ import #{zen.fhir
+          hl7-fhir-r4-core.Bundle
+          hl7-fhir-r4-core.value-set.bundle-type},
+ schema {:zen.fhir/version "0.6.6-8",
+         :confirms #{zen.fhir/Resource hl7-fhir-r4-core.Bundle/schema},
+         :zen/tags #{zen.fhir/profile-schema zen/schema},
+         :zen.fhir/profileUri "http://hl7.org/fhir/us/dme-orders/StructureDefinition/PAOX-bundle",
+         :require #{:identifier :entry :timestamp},
+         :type zen/map,
+         :zen/desc "PAO Bundle profile includes a MessageHeader, Task, Subscription, service/device/medication order(s) and supporting documentation",
+         :keys {:identifier {:type zen/map,
+                             :keys {:id {:fhir/flags #{:MS}},
+                                    :value {:fhir/flags #{:MS}}},
+                             :require #{:value :id},
+                             :fhir/flags #{:MS}},
+                :type {:const {:value "message"},
+                       :fhir/flags #{:MS},
+                       :zen.fhir/value-set {:symbol hl7-fhir-r4-core.value-set.bundle-type/value-set,
+                                            :strength :required}},
+                :timestamp {:fhir/flags #{:MS}},
+                :entry {:type zen/vector,
+                        :every {:fhir/flags #{:MS}},
+                        :minItems 1}},
+         :zen.fhir/type "Bundle"}}

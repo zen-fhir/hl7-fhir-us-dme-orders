@@ -1,88 +1,60 @@
 {ns hl7-fhir-us-dme-orders.PAOX-messageheader,
- import
- #{zen.fhir
-   hl7-fhir-us-core.us-core-practitioner
-   hl7-fhir-us-dme-orders.PAOX-medication-request
-   hl7-fhir-r4-core.MessageHeader
-   hl7-fhir-us-core.us-core-organization
-   hl7-fhir-us-dme-orders.PAOX-servicerequest
-   hl7-fhir-us-dme-orders.value-set.PAOx-Message-Event
-   hl7-fhir-us-dme-orders.PAOX-devicerequest
-   hl7-fhir-us-core.us-core-practitionerrole
-   hl7-fhir-us-dme-orders.PAOX-task},
- schema
- {:zen.fhir/version "0.6.6-7",
-  :confirms #{hl7-fhir-r4-core.MessageHeader/schema zen.fhir/Resource},
-  :zen/tags #{zen.fhir/profile-schema zen/schema},
-  :zen.fhir/profileUri
-  "http://hl7.org/fhir/us/dme-orders/StructureDefinition/PAOX-messageheader",
-  :require #{:focus :destination},
-  :type zen/map,
-  :zen/desc
-  "PAO MessageHeader Resource Profile\nThis profiles is used to order, update, cancel and query the status of an order\nIt requires the consistant use of identifiers to ensure that any actions targeted at a prior order affectonly that order.",
-  :keys
-  {:response #:fhir{:flags #{:MS}},
-   :enterer
-   {:fhir/flags #{:MS},
-    :confirms #{zen.fhir/Reference},
-    :zen.fhir/reference
-    {:refers
-     #{hl7-fhir-us-core.us-core-practitionerrole/schema
-       hl7-fhir-us-core.us-core-practitioner/schema}}},
-   :source #:fhir{:flags #{:MS}},
-   :author
-   {:fhir/flags #{:MS},
-    :confirms #{zen.fhir/Reference},
-    :zen.fhir/reference
-    {:refers
-     #{hl7-fhir-us-core.us-core-practitionerrole/schema
-       hl7-fhir-us-core.us-core-practitioner/schema}}},
-   :responsible
-   {:fhir/flags #{:MS},
-    :confirms #{zen.fhir/Reference},
-    :zen.fhir/reference
-    {:refers
-     #{hl7-fhir-us-core.us-core-practitionerrole/schema
-       hl7-fhir-us-core.us-core-organization/schema
-       hl7-fhir-us-core.us-core-practitioner/schema}}},
-   :event
-   {:fhir/polymorphic true,
-    :type zen/map,
-    :fhir/flags #{:MS},
-    :zen.fhir/value-set
-    {:symbol
-     hl7-fhir-us-dme-orders.value-set.PAOx-Message-Event/value-set,
-     :strength :required}},
-   :sender
-   {:fhir/flags #{:MS},
-    :confirms #{zen.fhir/Reference},
-    :zen.fhir/reference
-    {:refers
-     #{hl7-fhir-us-core.us-core-practitionerrole/schema
-       hl7-fhir-us-core.us-core-organization/schema
-       hl7-fhir-us-core.us-core-practitioner/schema}}},
-   :focus
-   {:type zen/vector,
-    :every
-    {:fhir/flags #{:MS},
-     :confirms #{zen.fhir/Reference},
-     :zen.fhir/reference
-     {:refers
-      #{hl7-fhir-us-dme-orders.PAOX-devicerequest/schema
-        hl7-fhir-us-dme-orders.PAOX-servicerequest/schema
-        hl7-fhir-us-dme-orders.PAOX-task/schema
-        hl7-fhir-us-dme-orders.PAOX-medication-request/schema}}},
-    :minItems 1},
-   :destination
-   {:type zen/vector,
-    :every
-    {:type zen/map,
-     :keys
-     {:receiver
-      {:fhir/flags #{:MS},
-       :confirms #{zen.fhir/Reference},
-       :zen.fhir/reference
-       {:refers #{hl7-fhir-us-core.us-core-organization/schema}}}},
-     :fhir/flags #{:MS}},
-    :minItems 1}},
-  :zen.fhir/type "MessageHeader"}}
+ import #{zen.fhir
+          hl7-fhir-us-core.us-core-practitioner
+          hl7-fhir-us-dme-orders.PAOX-medication-request
+          hl7-fhir-r4-core.MessageHeader
+          hl7-fhir-us-core.us-core-organization
+          hl7-fhir-us-dme-orders.PAOX-servicerequest
+          hl7-fhir-us-dme-orders.value-set.PAOx-Message-Event
+          hl7-fhir-us-dme-orders.PAOX-devicerequest
+          hl7-fhir-us-core.us-core-practitionerrole
+          hl7-fhir-us-dme-orders.PAOX-task},
+ schema {:zen.fhir/version "0.6.6-8",
+         :confirms #{hl7-fhir-r4-core.MessageHeader/schema
+                     zen.fhir/Resource},
+         :zen/tags #{zen.fhir/profile-schema zen/schema},
+         :zen.fhir/profileUri "http://hl7.org/fhir/us/dme-orders/StructureDefinition/PAOX-messageheader",
+         :require #{:focus :destination},
+         :type zen/map,
+         :zen/desc "PAO MessageHeader Resource Profile\nThis profiles is used to order, update, cancel and query the status of an order\nIt requires the consistant use of identifiers to ensure that any actions targeted at a prior order affectonly that order.",
+         :keys {:response {:fhir/flags #{:MS}},
+                :enterer {:fhir/flags #{:MS},
+                          :confirms #{zen.fhir/Reference},
+                          :zen.fhir/reference {:refers #{hl7-fhir-us-core.us-core-practitionerrole/schema
+                                                         hl7-fhir-us-core.us-core-practitioner/schema}}},
+                :source {:fhir/flags #{:MS}},
+                :author {:fhir/flags #{:MS},
+                         :confirms #{zen.fhir/Reference},
+                         :zen.fhir/reference {:refers #{hl7-fhir-us-core.us-core-practitionerrole/schema
+                                                        hl7-fhir-us-core.us-core-practitioner/schema}}},
+                :responsible {:fhir/flags #{:MS},
+                              :confirms #{zen.fhir/Reference},
+                              :zen.fhir/reference {:refers #{hl7-fhir-us-core.us-core-practitionerrole/schema
+                                                             hl7-fhir-us-core.us-core-organization/schema
+                                                             hl7-fhir-us-core.us-core-practitioner/schema}}},
+                :event {:fhir/polymorphic true,
+                        :type zen/map,
+                        :fhir/flags #{:MS},
+                        :zen.fhir/value-set {:symbol hl7-fhir-us-dme-orders.value-set.PAOx-Message-Event/value-set,
+                                             :strength :required}},
+                :sender {:fhir/flags #{:MS},
+                         :confirms #{zen.fhir/Reference},
+                         :zen.fhir/reference {:refers #{hl7-fhir-us-core.us-core-practitionerrole/schema
+                                                        hl7-fhir-us-core.us-core-organization/schema
+                                                        hl7-fhir-us-core.us-core-practitioner/schema}}},
+                :focus {:type zen/vector,
+                        :every {:fhir/flags #{:MS},
+                                :confirms #{zen.fhir/Reference},
+                                :zen.fhir/reference {:refers #{hl7-fhir-us-dme-orders.PAOX-devicerequest/schema
+                                                               hl7-fhir-us-dme-orders.PAOX-servicerequest/schema
+                                                               hl7-fhir-us-dme-orders.PAOX-task/schema
+                                                               hl7-fhir-us-dme-orders.PAOX-medication-request/schema}}},
+                        :minItems 1},
+                :destination {:type zen/vector,
+                              :every {:type zen/map,
+                                      :keys {:receiver {:fhir/flags #{:MS},
+                                                        :confirms #{zen.fhir/Reference},
+                                                        :zen.fhir/reference {:refers #{hl7-fhir-us-core.us-core-organization/schema}}}},
+                                      :fhir/flags #{:MS}},
+                              :minItems 1}},
+         :zen.fhir/type "MessageHeader"}}

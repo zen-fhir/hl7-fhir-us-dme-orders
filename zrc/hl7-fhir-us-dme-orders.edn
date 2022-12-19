@@ -1,64 +1,30 @@
 {ns hl7-fhir-us-dme-orders,
- import
- #{zen.fhir hl7-fhir-us-core hl7-fhir-r4-core hl7-terminology-r4},
- extensions
- {:zen/tags #{zen.fhir/extensions},
-  :schemas
-  {"http://hl7.org/fhir/us/dme-orders/StructureDefinition/PAOX-relevant-reviews-extension"
-   #zen/quote hl7-fhir-us-dme-orders.PAOX-relevant-reviews-extension/schema,
-   "http://fhir.org/fhir/us/dme-orders/StructureDefinition/PAOX-order-detail-extension"
-   #zen/quote hl7-fhir-us-dme-orders.PAOX-order-detail-extension/schema}},
- ig
- {:zen/tags #{zen.fhir/ig},
-  :profiles profiles,
-  :extensions extensions,
-  :structures structures,
-  :value-sets value-sets},
- profiles
- {:zen/tags #{zen.fhir/profiles},
-  :schemas
-  {"Coverage"
-   {"http://hl7.org/fhir/us/dme-orders/StructureDefinition/PAOX-coverage"
-    #zen/quote hl7-fhir-us-dme-orders.PAOX-coverage/schema},
-   "Bundle"
-   {"http://hl7.org/fhir/us/dme-orders/StructureDefinition/PAOX-bundle"
-    #zen/quote hl7-fhir-us-dme-orders.PAOX-bundle/schema},
-   "Medication"
-   {"http://hl7.org/fhir/us/dme-orders/StructureDefintion/PAOX-Medication"
-    #zen/quote hl7-fhir-us-dme-orders.PAOX-Medication/schema},
-   "MessageHeader"
-   {"http://hl7.org/fhir/us/dme-orders/StructureDefinition/PAOX-messageheader"
-    #zen/quote hl7-fhir-us-dme-orders.PAOX-messageheader/schema},
-   "MedicationRequest"
-   {"http://hl7.org/fhir/us/dme-orders/StructureDefinition/PAOX-medication-request"
-    #zen/quote hl7-fhir-us-dme-orders.PAOX-medication-request/schema},
-   "DeviceDefinition"
-   {"http://hl7.org/fhir/us/dme-orders/StructureDefinition/PAOX-devicedefinition"
-    #zen/quote hl7-fhir-us-dme-orders.PAOX-devicedefinition/schema},
-   "DeviceRequest"
-   {"http://hl7.org/fhir/us/dme-orders/StructureDefinition/PAOX-devicerequest"
-    #zen/quote hl7-fhir-us-dme-orders.PAOX-devicerequest/schema},
-   "Subscription"
-   {"http://hl7.org/fhir/us/dme-orders/StructureDefinition/PAOX-subscription"
-    #zen/quote hl7-fhir-us-dme-orders.PAOX-subscription/schema},
-   "ServiceRequest"
-   {"http://hl7.org/fhir/us/dme-orders/StructureDefinition/PAOX-servicerequest"
-    #zen/quote hl7-fhir-us-dme-orders.PAOX-servicerequest/schema},
-   "Task"
-   {"http://hl7.org/fhir/us/dme-orders/StructureDefinition/PAOX-task"
-    #zen/quote hl7-fhir-us-dme-orders.PAOX-task/schema},
-   "Provenance"
-   {"http://hl7.org/fhir/us/dme-orders/StructureDefinition/PAOX-provenance"
-    #zen/quote hl7-fhir-us-dme-orders.PAOX-provenance/schema}}},
- structures
- {:zen/tags #{zen.fhir/structures},
-  :schemas
-  {"http://fhir.org/fhir/us/dme-orders/StructureDefinition/PAOX-devicerequest-extension"
-   #zen/quote hl7-fhir-us-dme-orders.PAOX-devicerequest-extension/schema}},
- value-sets
- {:zen/tags #{zen.fhir/value-sets},
-  :value-sets
-  {"http://hl7.org/fhir/us/dme-orders/ValueSet/PAOx-Message-Event"
-   #zen/quote hl7-fhir-us-dme-orders.value-set.PAOx-Message-Event/value-set,
-   "http://hl7.org/fhir/us/dme-orders/ValueSet/PAOX-Task-Code"
-   #zen/quote hl7-fhir-us-dme-orders.value-set.PAOX-Task-Code/value-set}}}
+ import #{zen.fhir
+          hl7-fhir-us-core
+          hl7-fhir-r4-core
+          hl7-terminology-r4},
+ extensions {:zen/tags #{zen.fhir/extensions},
+             :schemas {"http://hl7.org/fhir/us/dme-orders/StructureDefinition/PAOX-relevant-reviews-extension" #zen/quote hl7-fhir-us-dme-orders.PAOX-relevant-reviews-extension/schema,
+                       "http://fhir.org/fhir/us/dme-orders/StructureDefinition/PAOX-order-detail-extension" #zen/quote hl7-fhir-us-dme-orders.PAOX-order-detail-extension/schema}},
+ ig {:zen/tags #{zen.fhir/ig},
+     :profiles profiles,
+     :extensions extensions,
+     :structures structures,
+     :value-sets value-sets},
+ profiles {:zen/tags #{zen.fhir/profiles},
+           :schemas {"Coverage" {"http://hl7.org/fhir/us/dme-orders/StructureDefinition/PAOX-coverage" #zen/quote hl7-fhir-us-dme-orders.PAOX-coverage/schema},
+                     "Bundle" {"http://hl7.org/fhir/us/dme-orders/StructureDefinition/PAOX-bundle" #zen/quote hl7-fhir-us-dme-orders.PAOX-bundle/schema},
+                     "Medication" {"http://hl7.org/fhir/us/dme-orders/StructureDefintion/PAOX-Medication" #zen/quote hl7-fhir-us-dme-orders.PAOX-Medication/schema},
+                     "MessageHeader" {"http://hl7.org/fhir/us/dme-orders/StructureDefinition/PAOX-messageheader" #zen/quote hl7-fhir-us-dme-orders.PAOX-messageheader/schema},
+                     "MedicationRequest" {"http://hl7.org/fhir/us/dme-orders/StructureDefinition/PAOX-medication-request" #zen/quote hl7-fhir-us-dme-orders.PAOX-medication-request/schema},
+                     "DeviceDefinition" {"http://hl7.org/fhir/us/dme-orders/StructureDefinition/PAOX-devicedefinition" #zen/quote hl7-fhir-us-dme-orders.PAOX-devicedefinition/schema},
+                     "DeviceRequest" {"http://hl7.org/fhir/us/dme-orders/StructureDefinition/PAOX-devicerequest" #zen/quote hl7-fhir-us-dme-orders.PAOX-devicerequest/schema},
+                     "Subscription" {"http://hl7.org/fhir/us/dme-orders/StructureDefinition/PAOX-subscription" #zen/quote hl7-fhir-us-dme-orders.PAOX-subscription/schema},
+                     "ServiceRequest" {"http://hl7.org/fhir/us/dme-orders/StructureDefinition/PAOX-servicerequest" #zen/quote hl7-fhir-us-dme-orders.PAOX-servicerequest/schema},
+                     "Task" {"http://hl7.org/fhir/us/dme-orders/StructureDefinition/PAOX-task" #zen/quote hl7-fhir-us-dme-orders.PAOX-task/schema},
+                     "Provenance" {"http://hl7.org/fhir/us/dme-orders/StructureDefinition/PAOX-provenance" #zen/quote hl7-fhir-us-dme-orders.PAOX-provenance/schema}}},
+ structures {:zen/tags #{zen.fhir/structures},
+             :schemas {"http://fhir.org/fhir/us/dme-orders/StructureDefinition/PAOX-devicerequest-extension" #zen/quote hl7-fhir-us-dme-orders.PAOX-devicerequest-extension/schema}},
+ value-sets {:zen/tags #{zen.fhir/value-sets},
+             :value-sets {"http://hl7.org/fhir/us/dme-orders/ValueSet/PAOx-Message-Event" #zen/quote hl7-fhir-us-dme-orders.value-set.PAOx-Message-Event/value-set,
+                          "http://hl7.org/fhir/us/dme-orders/ValueSet/PAOX-Task-Code" #zen/quote hl7-fhir-us-dme-orders.value-set.PAOX-Task-Code/value-set}}}
