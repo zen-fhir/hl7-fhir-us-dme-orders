@@ -8,7 +8,7 @@
          :zen/desc "PAO Provenance Profile based on US Core",
          :zen.fhir/type "Provenance",
          :zen.fhir/profileUri "http://hl7.org/fhir/us/dme-orders/StructureDefinition/PAOX-provenance",
-         :zen.fhir/version "0.6.8",
+         :zen.fhir/version "0.6.9",
          :confirms #{hl7-fhir-us-core.us-core-provenance/schema
                      zen.fhir/Resource},
          :type zen/map,
