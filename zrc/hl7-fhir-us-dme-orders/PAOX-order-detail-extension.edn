@@ -2,7 +2,7 @@
  import #{zen.fhir
           hl7-fhir-r4-core.Quantity
           hl7-fhir-r4-core.CodeableConcept},
- schema {:zen.fhir/version "0.6.15",
+ schema {:zen.fhir/version "0.6.16-2",
          :zen/tags #{zen/schema zen.fhir/structure-schema},
          :zen.fhir/profileUri "http://fhir.org/fhir/us/dme-orders/StructureDefinition/PAOX-order-detail-extension",
          :require #{:Quantity :Item},
