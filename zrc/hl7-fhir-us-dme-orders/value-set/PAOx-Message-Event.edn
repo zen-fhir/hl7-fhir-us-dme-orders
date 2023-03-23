@@ -2,7 +2,7 @@
  import #{zen.fhir},
  value-set {:zen/tags #{zen.fhir/value-set},
             :zen/desc "Message Envent value set",
-            :zen.fhir/version "0.6.18-1",
+            :zen.fhir/version "0.6.19",
             :fhir/code-systems #{{:fhir/url "http://hl7.org/fhir/us/dme-orders/CodeSystem/PAOX-Message-Event",
                                   :zen.fhir/content :bundled}},
             :uri "http://hl7.org/fhir/us/dme-orders/ValueSet/PAOx-Message-Event",

@@ -1,14 +1,17 @@
 {ns hl7-fhir-us-dme-orders.PAOX-provenance,
- import #{zen.fhir
+ import #{hl7-fhir-us-dme-orders.PAOX-provenance
+          zen.fhir
           hl7-fhir-us-dme-orders.PAOX-medication-request
           hl7-fhir-us-dme-orders.PAOX-servicerequest
           hl7-fhir-us-dme-orders.PAOX-devicerequest
           hl7-fhir-us-core.us-core-provenance},
+ agent-schema {:zen/tags #{zen/schema zen.fhir/structure-schema},
+               :zen.fhir/version "0.6.19"},
  schema {:zen/tags #{zen.fhir/profile-schema zen/schema},
          :zen/desc "PAO Provenance Profile based on US Core",
          :zen.fhir/type "Provenance",
          :zen.fhir/profileUri "http://hl7.org/fhir/us/dme-orders/StructureDefinition/PAOX-provenance",
-         :zen.fhir/version "0.6.18-1",
+         :zen.fhir/version "0.6.19",
          :confirms #{hl7-fhir-us-core.us-core-provenance/schema
                      zen.fhir/Resource},
          :type zen/map,
@@ -16,4 +19,5 @@
                          :every {:confirms #{zen.fhir/Reference},
                                  :zen.fhir/reference {:refers #{hl7-fhir-us-dme-orders.PAOX-devicerequest/schema
                                                                 hl7-fhir-us-dme-orders.PAOX-servicerequest/schema
-                                                                hl7-fhir-us-dme-orders.PAOX-medication-request/schema}}}}}}}
+                                                                hl7-fhir-us-dme-orders.PAOX-medication-request/schema}}}},
+                :agent {:confirms #{hl7-fhir-us-dme-orders.PAOX-provenance/agent-schema}}}}}
