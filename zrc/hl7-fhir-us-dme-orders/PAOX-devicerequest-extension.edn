@@ -3,6 +3,6 @@
  schema {:zen/tags #{zen/schema zen.fhir/structure-schema},
          :zen.fhir/type "Reference",
          :zen.fhir/profileUri "http://fhir.org/fhir/us/dme-orders/StructureDefinition/PAOX-devicerequest-extension",
-         :zen.fhir/version "0.6.20-2",
+         :zen.fhir/version "0.6.21-2",
          :confirms #{zen.fhir/Reference},
          :zen.fhir/reference {:refers #{hl7-fhir-us-dme-orders.PAOX-devicedefinition/schema}}}}
