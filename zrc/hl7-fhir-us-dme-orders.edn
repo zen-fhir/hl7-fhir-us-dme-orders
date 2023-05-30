@@ -4,12 +4,12 @@
           hl7-fhir-r4-core
           hl7-terminology-r4},
  extensions {:zen/tags #{zen.fhir/extensions},
-             :schemas {"http://hl7.org/fhir/us/dme-orders/StructureDefinition/PAOX-relevant-reviews-extension" #zen/quote hl7-fhir-us-dme-orders.PAOX-relevant-reviews-extension/schema,
+             :schemas {"http://fhir.org/fhir/us/dme-orders/StructureDefinition/PAOX-devicerequest-extension" #zen/quote hl7-fhir-us-dme-orders.PAOX-devicerequest-extension/schema,
+                       "http://hl7.org/fhir/us/dme-orders/StructureDefinition/PAOX-relevant-reviews-extension" #zen/quote hl7-fhir-us-dme-orders.PAOX-relevant-reviews-extension/schema,
                        "http://fhir.org/fhir/us/dme-orders/StructureDefinition/PAOX-order-detail-extension" #zen/quote hl7-fhir-us-dme-orders.PAOX-order-detail-extension/schema}},
  ig {:zen/tags #{zen.fhir/ig},
      :profiles profiles,
      :extensions extensions,
-     :structures structures,
      :value-sets value-sets},
  profiles {:zen/tags #{zen.fhir/profiles},
            :schemas {"Coverage" {"http://hl7.org/fhir/us/dme-orders/StructureDefinition/PAOX-coverage" #zen/quote hl7-fhir-us-dme-orders.PAOX-coverage/schema},
@@ -23,8 +23,6 @@
                      "ServiceRequest" {"http://hl7.org/fhir/us/dme-orders/StructureDefinition/PAOX-servicerequest" #zen/quote hl7-fhir-us-dme-orders.PAOX-servicerequest/schema},
                      "Task" {"http://hl7.org/fhir/us/dme-orders/StructureDefinition/PAOX-task" #zen/quote hl7-fhir-us-dme-orders.PAOX-task/schema},
                      "Provenance" {"http://hl7.org/fhir/us/dme-orders/StructureDefinition/PAOX-provenance" #zen/quote hl7-fhir-us-dme-orders.PAOX-provenance/schema}}},
- structures {:zen/tags #{zen.fhir/structures},
-             :schemas {"http://fhir.org/fhir/us/dme-orders/StructureDefinition/PAOX-devicerequest-extension" #zen/quote hl7-fhir-us-dme-orders.PAOX-devicerequest-extension/schema}},
  value-sets {:zen/tags #{zen.fhir/value-sets},
              :value-sets {"http://hl7.org/fhir/us/dme-orders/ValueSet/PAOx-Message-Event" #zen/quote hl7-fhir-us-dme-orders.value-set.PAOx-Message-Event/value-set,
                           "http://hl7.org/fhir/us/dme-orders/ValueSet/PAOX-Task-Code" #zen/quote hl7-fhir-us-dme-orders.value-set.PAOX-Task-Code/value-set}}}
